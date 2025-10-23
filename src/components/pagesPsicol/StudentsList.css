@@ -1,0 +1,126 @@
+/* ===== Students.css — Theme-aware (hereda body[data-theme]) ===== */
+
+/* Barra de herramientas */
+.students-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.students-toolbar .input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color);
+  outline: none;
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.students-toolbar .input::placeholder {
+  color: color-mix(in oklab, var(--text-color) 60%, transparent);
+}
+
+.students-toolbar .input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Botón principal */
+.students-toolbar .btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.students-toolbar .btn-primary:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== Tabla de estudiantes ===== */
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.students-table th,
+.students-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--table-border);
+  text-align: left;
+  word-break: break-word;
+}
+
+.students-table th {
+  font-weight: 800;
+  background: color-mix(in oklab, var(--table-head) 85%, var(--card-bg));
+}
+
+/* ===== Badges ===== */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-right: 6px;
+  color: var(--text-color);
+  border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+}
+
+.badge.ok {
+  background: color-mix(in oklab, #4caf50 18%, transparent);
+  color: #4caf50;
+  border-color: color-mix(in oklab, #4caf50 45%, transparent);
+}
+
+.badge.warn {
+  background: color-mix(in oklab, #ffc107 18%, transparent);
+  color: #ffc107;
+  border-color: color-mix(in oklab, #ffc107 45%, transparent);
+}
+
+/* ===== Botón dentro de la tabla ===== */
+.students-table .btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.students-table .btn-primary:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .students-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .students-table th,
+  .students-table td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}

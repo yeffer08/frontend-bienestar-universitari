@@ -1,0 +1,158 @@
+/* CreateStudent.css — Theme-aware (hereda body[data-theme]) */
+
+/* Wrapper general */
+.cs-wrapper {
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--text-color);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Título */
+.cs-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-color);
+}
+.cs-divider {
+  height: 3px;
+  width: 60px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 10px 0 16px 0;
+}
+
+/* Alertas */
+.cs-alert {
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid transparent;
+}
+.cs-alert.error {
+  background: color-mix(in oklab, #b00020 15%, transparent);
+  color: #b00020;
+  border-color: color-mix(in oklab, #b00020 35%, transparent);
+}
+.cs-alert.success {
+  background: color-mix(in oklab, #28a745 15%, transparent);
+  color: #1e7e34;
+  border-color: color-mix(in oklab, #28a745 35%, transparent);
+}
+
+/* Formulario */
+.cs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Fieldset y legend */
+.cs-form fieldset {
+  border: 1px solid var(--table-border);
+  border-radius: 12px;
+  padding: 14px;
+  background: color-mix(in oklab, var(--card-bg) 96%, var(--bg-color));
+}
+.cs-form legend {
+  padding: 0 8px;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+/* Grid utilitario */
+.grid-2 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.form-group.full { grid-column: 1 / -1; }
+
+/* Labels */
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+/* Inputs base */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  box-sizing: border-box;
+}
+
+.form-group textarea { resize: vertical; }
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: color-mix(in oklab, var(--text-color) 60%, transparent);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Select (flecha visible y tema coherente) */
+.form-group select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  padding-right: 34px;
+  background:
+    color-mix(in oklab, var(--card-bg) 92%, var(--bg-color))
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='%23aaa'><path d='M7 10l5 5 5-5'/></svg>")
+    no-repeat right 12px center;
+  background-size: 14px;
+}
+.form-group select option {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Acciones */
+.cs-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+  gap: 10px;
+}
+
+/* Botón principal (sin gradiente fijo; usa paleta del tema) */
+.cs-btn {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.cs-btn:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}

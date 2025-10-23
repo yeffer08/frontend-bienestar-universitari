@@ -1,0 +1,234 @@
+/* Register.css — Theme-aware (hereda variables de AdminLayout.css) */
+
+/* RESET GLOBAL */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fondo general según tema */
+.register-fullscreen {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  color: var(--text-color);
+}
+
+/* Panel principal (tarjeta grande) */
+.register-card {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: var(--card-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--text-color);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Header (título izq + botón der) con sticky */
+.register-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px 0;
+  /* fondo semitransparente para que el sticky se lea sobre scroll */
+  background: color-mix(in oklab, var(--card-bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.register-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-color);
+}
+.register-header .register-button {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+/* Separador bajo el header */
+.register-divider {
+  height: 3px;
+  width: 60px;
+  margin: 0 0 10px 0;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Mensajes */
+.error-message,
+.success-message {
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+.error-message {
+  background: color-mix(in oklab, #b00020 15%, transparent);
+  color: #b00020;
+  border-color: color-mix(in oklab, #b00020 35%, transparent);
+}
+.success-message {
+  background: color-mix(in oklab, #28a745 15%, transparent);
+  color: #1e7e34;
+  border-color: color-mix(in oklab, #28a745 35%, transparent);
+}
+
+/* Contenido (lista + modal para crear) */
+.register-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 30px;
+}
+
+/* Panel usuarios (tabla) */
+.users-panel { overflow-y: auto; min-width: 0; }
+.users-panel h3 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.users-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  table-layout: fixed;
+  background: color-mix(in oklab, var(--card-bg) 96%, var(--bg-color));
+  border-radius: 14px;
+  overflow: hidden;
+}
+.users-panel th, .users-panel td {
+  padding: 12px;
+  border-bottom: 1px solid var(--table-border);
+  text-align: left;
+  word-break: break-word;
+  color: var(--text-color);
+}
+.users-panel th {
+  font-weight: 800;
+  background: var(--table-head);
+}
+
+/* Botón “eliminar” (antes tenía gradiente) */
+.btn-danger {
+  background: color-mix(in oklab, #b00020 85%, black 0%);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.btn-danger:hover {
+  background: color-mix(in oklab, #7d0017 92%, black 0%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* Formulario (dentro del modal) */
+.register-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: block;
+  color: var(--text-color);
+}
+.register-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color);
+  font-size: 0.95rem;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  box-sizing: border-box;
+}
+.register-input::placeholder {
+  color: color-mix(in oklab, var(--text-color) 60%, transparent);
+}
+.register-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Botón principal (sin gradiente; usa variables del tema) */
+.register-button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.register-button:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* Modal crear usuario */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: color-mix(in oklab, #000 55%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px; z-index: 1000;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.modal-content {
+  width: 100%; max-width: 560px;
+  background: color-mix(in oklab, var(--card-bg) 98%, var(--bg-color));
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  color: var(--text-color);
+  padding: 22px;
+  border: 1px solid var(--table-border);
+}
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.modal-header h3 { margin: 0; font-weight: 800; }
+.modal-close {
+  all: unset; cursor: pointer; font-size: 22px; line-height: 1;
+  padding: 6px 8px; border-radius: 8px; color: var(--text-color);
+}
+.modal-close:hover {
+  background: color-mix(in oklab, var(--button-bg) 38%, transparent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .register-card { padding: 24px 16px; }
+  .register-content { grid-template-columns: 1fr; }
+  .register-header h2 { font-size: 1.4rem; }
+}

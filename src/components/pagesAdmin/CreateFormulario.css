@@ -1,0 +1,238 @@
+/* ================================
+   CrearFormularios.css (theme-aware)
+   Hereda variables de AdminLayout.css vía body[data-theme]
+   ================================ */
+
+/* === CONTENEDOR GENERAL === */
+.formulario-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  min-height: 100vh; /* ocupa alto con el layout */
+  color: var(--text-color);
+}
+
+.formulario-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 100.2em; /* como pediste */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Encabezado */
+.formulario-header h2 {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+/* === MENSAJE (éxito / info / error opcional) === */
+.mensaje {
+  background: color-mix(in oklab, #28a745 18%, transparent);
+  color: #1e7e34;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 800;
+  border: 1px solid color-mix(in oklab, #28a745 38%, transparent);
+}
+
+.mensaje--info {
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  color: var(--text-color);
+  border: 1px solid color-mix(in oklab, var(--accent) 32%, transparent);
+}
+
+.mensaje--error {
+  background: color-mix(in oklab, #b00020 15%, transparent);
+  color: #b00020;
+  border: 1px solid color-mix(in oklab, #b00020 35%, transparent);
+}
+
+/* === INPUTS / TEXTAREA / SELECT === */
+.input,
+.pregunta-textarea,
+.select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--table-border);
+  outline: none;
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  margin: 5px;
+}
+
+.input::placeholder,
+.pregunta-textarea::placeholder {
+  color: color-mix(in oklab, var(--text-color) 60%, transparent);
+  opacity: 0.85;
+}
+
+.input:focus,
+.pregunta-textarea:focus,
+.select:focus {
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Textarea de preguntas */
+.pregunta-textarea {
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* === PREGUNTAS === */
+.formulario-subtitle {
+  color: var(--text-color);
+  margin: 20px 0 10px;
+  font-weight: 800;
+}
+
+.pregunta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+}
+
+/* Opciones (select + checkbox + botón en fila) */
+.pregunta-opciones {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* === SELECT (flecha personalizada y compatibilidad tema) === */
+.select {
+  appearance: none;
+  cursor: pointer;
+  max-width: 60%;
+  background:
+    color-mix(in oklab, var(--card-bg) 92%, var(--bg-color))
+    url("data:image/svg+xml;utf8,<svg fill='currentColor' height='14' width='14' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")
+    no-repeat right 12px center;
+  background-size: 14px;
+  color: var(--text-color);
+}
+
+/* Nota: los <option> no son totalmente estilables en todos los navegadores */
+.select option {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* === CHECKBOX === */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+/* === BOTONES === */
+.botones {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.92rem;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+/* Primario hereda del tema */
+.btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+.btn-primary:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* Éxito / Peligro con tonos accesibles en ambos temas */
+.btn-success {
+  background: color-mix(in oklab, #28a745 85%, black 0%);
+  color: #fff;
+}
+.btn-success:hover {
+  background: color-mix(in oklab, #218838 90%, black 0%);
+}
+
+.btn-danger {
+  background: color-mix(in oklab, #2a2a2a 90%, var(--bg-color));
+  color: #fff;
+}
+.btn-danger:hover {
+  background: color-mix(in oklab, #444 92%, var(--bg-color));
+}
+
+/* Opciones dentro de cada pregunta */
+.opciones-wrap {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opciones-title {
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+.opcion-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.opcion-row .opcion-input {
+  flex: 1;
+}
+
+.btn-opcion {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+}
+.btn-opcion:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .pregunta-opciones { flex-direction: column; align-items: stretch; }
+  .select { max-width: 100%; }
+}
+/* ================================
+   Fin de CrearFormularios.css
+   ================================ */

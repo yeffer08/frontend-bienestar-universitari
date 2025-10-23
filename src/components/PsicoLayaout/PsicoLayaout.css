@@ -1,0 +1,116 @@
+/* PsicoLayaout.css — con soporte de tema y colores de psicología */
+
+.psy-fullscreen {
+  min-height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.psy-container { width: 100%; }
+
+/* Header superior */
+.psy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--table-border);
+  padding-bottom: 12px;
+}
+
+.psy-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-small {
+  max-width: 240px;
+  height: auto;
+  filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.4));
+}
+
+.psy-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.psy-welcome {
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+/* Menú */
+.psy-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.psy-menu button {
+  margin-left: 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color);
+  transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.psy-menu button:hover {
+  background: var(--button-bg-hover);
+  color: var(--button-text);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Botón de tema */
+.theme-toggle {
+  background: var(--button-bg);
+  color: var(--button-text);
+  font-weight: bold;
+}
+.theme-toggle:hover {
+  background: var(--button-bg-hover);
+}
+
+/* Botón cerrar sesión */
+.logout-btn {
+  background: linear-gradient(90deg, #1ac5b1, #007b83);
+  color: #fff;
+  font-weight: bold;
+}
+.logout-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Contenido principal */
+.psy-main {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  min-height: 75vh;
+}
+
+/* Enlaces activos */
+a.active button {
+  background: var(--accent);
+  color: var(--button-text);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .psy-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .psy-menu { flex-wrap: wrap; }
+}

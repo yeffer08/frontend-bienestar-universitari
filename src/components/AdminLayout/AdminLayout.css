@@ -1,0 +1,168 @@
+/* ===== RESET ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+/* ===== THEMING (sin gradientes) ===== */
+body[data-theme="dark"] {
+  --bg-color: #0b1e42;           /* fondo general */
+  --text-color: #ffffff;
+  --header-text: #ffffff;
+  --card-bg: #152f65;            /* tarjetas / bloques */
+  --button-bg: rgba(255,255,255,0.14);
+  --button-bg-hover: #e86e1c;
+  --button-text: #ffffff;
+  --accent: #e86e1c;
+  --accent-btn-bg: #ffd700;      /* botón salir */
+  --accent-btn-text: #111111;
+  --table-border: rgba(255,255,255,0.2);
+  --table-head: rgba(255,255,255,0.15);
+}
+
+body[data-theme="light"] {
+  --bg-color: #f4f6f9;
+  --text-color: #111111;
+  --header-text: #111111;
+  --card-bg: #ffffff;
+  --button-bg: #e5e7eb;          /* gris claro */
+  --button-bg-hover: #d1d5db;
+  --button-text: #111111;
+  --accent: #e86e1c;
+  --accent-btn-bg: #0b1e42;      /* botón salir en oscuro institucional */
+  --accent-btn-text: #ffffff;
+  --table-border: #d1d5db;
+  --table-head: #e5e7eb;
+}
+
+/* ===== LAYOUT ===== */
+.admin-fullscreen {
+  min-height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: var(--text-color);
+}
+
+.admin-container { width: 100%; }
+
+/* ===== HEADER ===== */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-small {
+  max-width: 220px;
+  height: auto;
+}
+
+.admin-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--header-text);
+}
+
+.admin-welcome {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffd700;
+  margin-top: 2px;
+}
+
+/* ===== ACTIONS (tema + menú) ===== */
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
+.theme-toggle-btn:hover {
+  background: var(--button-bg);
+  transform: translateY(-1px);
+}
+
+/* ===== MENU ===== */
+.admin-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-menu button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 12px 22px;
+  min-width: 140px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+.admin-menu button:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* Botón de salida SIN gradiente */
+.logout-btn {
+  background: var(--accent-btn-bg) !important;
+  color: var(--accent-btn-text) !important;
+}
+
+/* ===== TARJETAS ===== */
+.admin-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.admin-card h2 { text-align: center; margin-bottom: 10px; }
+
+/* ===== FORM ===== */
+.admin-form { display: flex; gap: 12px; margin-top: 14px; }
+
+/* ===== TABLA ===== */
+.admin-table {
+  width: 100%;
+  margin-top: 14px;
+  border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+  border: 1px solid var(--table-border);
+  padding: 10px;
+  text-align: center;
+}
+
+.admin-table th {
+  background: var(--table-head);
+  font-weight: 800;
+}

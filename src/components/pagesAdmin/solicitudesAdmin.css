@@ -1,0 +1,211 @@
+/* ====== Admin Section (theme-aware) ======
+   Hereda variables desde body[data-theme] definidas en AdminLayout.css
+   ======================================== */
+
+/* ====== Layout general ====== */
+.admin-content { padding: 18px; color: var(--text-color); }
+
+.admin-card {
+  background: var(--card-bg);
+  border: 1px solid var(--table-border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+
+.admin-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 8px;
+}
+
+.admin-card-actions button {
+  padding: 8px 10px; border-radius: 10px;
+  border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+  color: var(--text-color);
+  cursor: pointer; transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.admin-card-actions button:hover {
+  background: color-mix(in oklab, var(--button-bg) 35%, var(--card-bg));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+}
+.admin-card-actions button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ====== Filtros ====== */
+.filters-row {
+  display: flex; gap: 12px; margin: 12px 0 10px; flex-wrap: wrap;
+}
+.filter-item { display: flex; flex-direction: column; gap: 6px; min-width: 160px; }
+.filter-item.grow { flex: 1; }
+
+/* Inputs & selects (comparten estilo) */
+.filter-item input,
+.filter-item select {
+  padding: 10px 12px; border-radius: 10px;
+  border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color); outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.filter-item input::placeholder { color: color-mix(in oklab, var(--text-color) 60%, transparent); }
+
+.filter-item input:focus,
+.filter-item select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Select con flecha visible (sin pseudo ::after en select) */
+.filter-item select,
+.formx-group select,
+.modal-body select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  padding-right: 34px;
+  background:
+    color-mix(in oklab, var(--card-bg) 92%, var(--bg-color))
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='%23aaa'><path d='M7 10l5 5 5-5'/></svg>")
+    no-repeat right 12px center;
+  background-size: 14px;
+}
+.filter-item option,
+.formx-group option,
+.modal-body option {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* ====== Notices ====== */
+.notice {
+  margin-top: 12px; padding: 10px 12px; border-radius: 10px;
+  font-size: 0.95rem; line-height: 1.3;
+  background: color-mix(in oklab, var(--card-bg) 96%, var(--bg-color));
+  border: 1px solid var(--table-border);
+  color: var(--text-color);
+}
+.notice-ok   { box-shadow: 0 0 0 1px color-mix(in oklab, #4caf50 45%, transparent) inset; }
+.notice-warn { box-shadow: 0 0 0 1px color-mix(in oklab, #ffc107 45%, transparent) inset; }
+.notice-error{ box-shadow: 0 0 0 1px color-mix(in oklab, #dc3545 45%, transparent) inset; }
+
+/* ====== Tabla ====== */
+.table-wrapper {
+  overflow: auto; border-radius: 12px; border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 96%, var(--bg-color));
+}
+
+.admin-table { width: 100%; border-collapse: collapse; min-width: 1100px; color: var(--text-color); }
+
+.admin-table th,
+.admin-table td {
+  padding: 10px; border-bottom: 1px solid var(--table-border);
+  vertical-align: top; text-align: left;
+}
+
+.admin-table th {
+  font-weight: 800; white-space: nowrap; position: sticky; top: 0;
+  background: color-mix(in oklab, var(--table-head) 85%, var(--card-bg));
+  /* para que el sticky se lea sobre scroll */
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.ellipsis { max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ====== Acciones y botones ====== */
+.table-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Botones usan paleta del tema */
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  border-radius: 10px; padding: 6px 10px; cursor: pointer;
+  border: 1px solid var(--table-border);
+  color: var(--text-color);
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.btn-primary {
+  background: var(--button-bg); color: var(--button-text);
+  border: 1px solid color-mix(in oklab, var(--button-bg) 60%, transparent);
+}
+.btn-secondary { /* más neutro */
+  background: color-mix(in oklab, var(--button-bg) 22%, var(--card-bg));
+}
+.btn-ghost {
+  background: transparent;
+  border-style: dashed;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-ghost:hover,
+.admin-card-actions button:hover {
+  background: var(--button-bg-hover);
+  color: var(--button-text);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.14);
+}
+
+/* ====== Badges ====== */
+.badge {
+  padding: 4px 8px; border-radius: 999px; font-size: 0.85rem; display: inline-block;
+  color: var(--text-color); border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+}
+.badge-pending   { border-color: color-mix(in oklab, #ffc107 45%, transparent); background: color-mix(in oklab, #ffc107 18%, transparent); }
+.badge-assigned  { border-color: color-mix(in oklab, #4caf50 45%, transparent); background: color-mix(in oklab, #4caf50 18%, transparent); }
+.badge-scheduled { border-color: color-mix(in oklab, #5082ff 45%, transparent); background: color-mix(in oklab, #5082ff 18%, transparent); }
+
+/* ====== Paginación ====== */
+.pagination-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-top: 12px; color: var(--text-color);
+}
+.muted { opacity: .75; }
+
+.pager { display: flex; align-items: center; gap: 10px; }
+.pager button {
+  padding: 6px 10px; border-radius: 8px;
+  border: 1px solid var(--table-border);
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+  color: var(--text-color);
+  cursor: pointer; transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+.pager button:hover {
+  background: var(--button-bg-hover);
+  color: var(--button-text);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.14);
+}
+
+/* ====== Mini resumen del modal ====== */
+.mini-summary {
+  font-size: 0.95rem; opacity: 0.9;
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+  border: 1px dashed var(--table-border);
+  padding: 8px 10px; border-radius: 10px; margin-top: 8px; color: var(--text-color);
+}
+
+/* ====== Selects (compat extra para otros contenedores) ====== */
+.formx-group select,
+.modal-body select { /* mismos estilos que arriba para coherencia */
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  padding-right: 34px;
+  border: 1px solid var(--table-border);
+  background:
+    color-mix(in oklab, var(--card-bg) 92%, var(--bg-color))
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='%23aaa'><path d='M7 10l5 5 5-5'/></svg>")
+    no-repeat right 12px center;
+  background-size: 14px;
+  color: var(--text-color);
+}
+.formx-group option,
+.modal-body option { background: var(--card-bg); color: var(--text-color); }
+
+/* ====== Responsive ====== */
+@media (max-width: 960px) {
+  .admin-table { min-width: 800px; }
+}
+@media (max-width: 640px) {
+  .admin-table { min-width: 640px; }
+}

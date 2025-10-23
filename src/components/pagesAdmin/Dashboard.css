@@ -1,0 +1,152 @@
+/* ============================
+   Dashboard.css — Theme-aware
+   Usa variables de AdminLayout.css (data-theme en <body>)
+   ============================ */
+
+/* Hereda tipografías/transiciones globales del layout */
+
+/* ---- Toolbar (buscador + botón) ---- */
+/* Soporta ambas convenciones: .students-* y .toolbar/.input */
+.students-toolbar,
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* INPUT */
+.students-toolbar .input,
+.toolbar .input,
+.students-toolbar .input[type="text"],
+.toolbar .input[type="text"] {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  background: var(--card-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.students-toolbar .input::placeholder,
+.toolbar .input::placeholder {
+  /* Usa el color de texto con transparencia para funcionar en ambos temas */
+  color: color-mix(in oklab, var(--text-color) 60%, transparent);
+  opacity: .8;
+}
+
+.students-toolbar .input:focus,
+.toolbar .input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* BOTÓN PRIMARIO (en toolbar y en tabla) */
+.students-toolbar .btn-primary,
+.toolbar .btn-primary,
+.students-table .btn-primary,
+.table .btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease, box-shadow .2s ease;
+}
+
+.students-table .btn-primary,
+.table .btn-primary {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.students-toolbar .btn-primary:hover,
+.toolbar .btn-primary:hover,
+.students-table .btn-primary:hover,
+.table .btn-primary:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+/* ---- Tabla de estudiantes ---- */
+/* Soporta .students-table y .table */
+.students-table,
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.students-table th,
+.students-table td,
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--table-border);
+  text-align: left;
+  word-break: break-word;
+}
+
+.students-table th,
+.table th {
+  font-weight: 800;
+  background: var(--table-head);
+}
+
+/* ---- Badges de estado ---- */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-right: 6px;
+}
+
+/* OK / WARN con tonos que funcionan en claro y oscuro */
+.badge.ok {
+  background: color-mix(in oklab, #4caf50 20%, transparent);
+  color: #4caf50;
+  border: 1px solid color-mix(in oklab, #4caf50 45%, transparent);
+}
+
+.badge.warn {
+  background: color-mix(in oklab, #ffc107 20%, transparent);
+  color: #b78900; /* mejor contraste en claro/oscuro */
+  border: 1px solid color-mix(in oklab, #ffc107 45%, transparent);
+}
+
+/* ---- Mensajes de error / estados ---- */
+.error {
+  color: #b00020;
+  background: color-mix(in oklab, #b00020 15%, transparent);
+  border: 1px solid color-mix(in oklab, #b00020 35%, transparent);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 10px 0 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .students-toolbar,
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .students-table th, .students-table td,
+  .table th, .table td {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

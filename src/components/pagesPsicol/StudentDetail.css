@@ -1,0 +1,173 @@
+/* ====== StudentDetail — Theme-aware (hereda body[data-theme]) ====== */
+
+.student-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--text-color);
+}
+
+/* Header */
+.sd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.sd-title-wrap { display: flex; flex-direction: column; }
+
+.sd-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+.sd-subtitle {
+  margin-top: 4px;
+  color: color-mix(in oklab, var(--text-color) 65%, transparent);
+}
+
+/* Botones (base + primario) */
+.btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  cursor: pointer;
+  background: color-mix(in oklab, var(--card-bg) 92%, var(--bg-color));
+  color: var(--text-color);
+  transition: transform .06s ease, opacity .15s ease, border-color .15s ease, background .2s ease;
+}
+.btn:hover { opacity: .96; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+.btn-primary {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid color-mix(in oklab, var(--button-bg) 60%, transparent);
+}
+.btn-primary:hover {
+  background: var(--button-bg-hover);
+  opacity: 1;
+}
+.btn-primary:active { transform: translateY(1px); }
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Tarjetas / contenedores */
+.sd-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 14px;
+  padding: 0; /* el acordeón define sus paddings */
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  border: 1px solid var(--table-border);
+}
+
+/* Estado de error destacado */
+.sd-card.error {
+  color: color-mix(in oklab, #fecaca 95%, var(--text-color));
+  background: color-mix(in oklab, #7f1d1d 25%, var(--card-bg));
+  border: 1px solid color-mix(in oklab, #7f1d1d 55%, var(--table-border));
+  padding: 16px;
+}
+
+/* Contenedor vertical (cascada de secciones) */
+.sd-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Acordeón */
+.sd-section-card.open   { overflow: hidden; }
+.sd-section-card.closed { overflow: hidden; }
+
+.sd-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  background: color-mix(in oklab, var(--card-bg) 85%, var(--bg-color)); /* header un poco más oscuro */
+  color: var(--text-color);
+  border: none;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 14px 14px 0 0;
+}
+
+.sd-section-card.closed .sd-accordion-header { border-radius: 14px; }
+
+.sd-acc-title { font-weight: 800; font-size: 15px; }
+
+.sd-acc-icon {
+  transform: rotate(0deg);
+  transition: transform .18s ease, opacity .15s ease;
+  font-size: 14px;
+  opacity: .9;
+}
+.sd-acc-icon.rot { transform: rotate(180deg); }
+
+.sd-accordion-body {
+  padding: 12px 16px 16px 16px;
+  border-top: 1px solid var(--table-border);
+  border-radius: 0 0 14px 14px;
+  background: color-mix(in oklab, var(--card-bg) 96%, var(--bg-color));
+}
+
+/* Vista en cascada (campos apilados) */
+.sd-cascade {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sd-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  background: color-mix(in oklab, var(--card-bg) 94%, var(--bg-color));
+  border: 1px solid var(--table-border);
+  border-radius: 10px;
+}
+
+.sd-item label {
+  font-size: 12px;
+  color: color-mix(in oklab, var(--text-color) 58%, transparent);
+}
+
+.sd-item > div,
+.sd-text {
+  font-size: 14px;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+/* Acciones (derecha) */
+.sd-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Links internos */
+.student-detail a {
+  color: color-mix(in oklab, var(--accent) 70%, #93c5fd);
+  text-decoration: none;
+}
+.student-detail a:hover { text-decoration: underline; }
