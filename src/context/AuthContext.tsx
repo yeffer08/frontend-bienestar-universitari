@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         nombre_completo: payload.nombre, // Asegúrate de que el backend envíe 'nombre_completo'
         rol_id: payload.rol_id, // Si también lo necesitas
         // ... otras propiedades que vengan en el payload y sean parte de GlobalUserType
-      } as User); // Castea a User para que TypeScript sepa que es el tipo correcto
+      } as unknown as User); // Castea a User para que TypeScript sepa que es el tipo correcto
     } catch (error) {
       console.error("Error decoding token or setting user:", error);
       setUser(null); // Asegúrate de que el usuario sea null si hay un error

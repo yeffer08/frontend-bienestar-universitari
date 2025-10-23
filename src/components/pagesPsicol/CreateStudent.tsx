@@ -74,8 +74,6 @@ const initialState: StudentForm = {
 
 export default function CreateStudent() {
   const [form, setForm] = useState<StudentForm>(initialState);
-  const [docAutorizacion, setDocAutorizacion] = useState<File | null>(null);
-  const [docHistoria, setDocHistoria] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -158,18 +156,10 @@ export default function CreateStudent() {
 
     try {
       setIsSubmitting(true);
-      const created = await createStudent(payload);
-
-      // TODO: cuando tengas endpoint, subir archivos aquí
-      // const fd = new FormData();
-      // fd.append("autorizacion_datos", docAutorizacion);
-      // fd.append("historia_clinica", docHistoria);
-      // await uploadStudentDocuments(created.estudiante.id_estudiante, fd);
+      await createStudent(payload);
 
       setSuccess("Estudiante creado correctamente.");
       setForm(initialState);
-      setDocAutorizacion(null);
-      setDocHistoria(null);
     } catch (err: any) {
       setError(err?.normalizedMsg || err?.response?.data?.msg || "No se pudo crear el estudiante.");
     } finally {
